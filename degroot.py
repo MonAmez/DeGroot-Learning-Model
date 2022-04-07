@@ -1,11 +1,13 @@
+
+
 '''
 DEGROOT LEARNING MODEL
 
 Script to functionalize Degroot Learning Model
 
 Inputs: 
-  T - weighted adjacency Matrix
-  Number of Updates - Default Value = 10
+  T (python type: Numpy Matrix)- weighted adjacency Matrix
+  N (python type: Integer) - number of updates/iterations - Default Value = 10
   
 Output: 
   Updated adjacency matrix
@@ -21,8 +23,11 @@ Model:
     update is a weighted average of the belief of the neighbors which is captured by T_(i,j)
     SUM(T_(i,j)) = 1 where T_(i,j) >= 0 
 '''
+import networkx as nx
+import numpy as np
 
 def degroot(T,n=10):
-  return T
+  G = nx.from_numpy_matrix(T, parallel_edges=False, create_using=nx.DiGraph)
+  return T,G
 
 
