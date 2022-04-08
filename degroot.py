@@ -7,7 +7,8 @@ Script to functionalize Degroot Learning Model
 
 Inputs: 
   T (python type: Numpy Matrix)- weighted adjacency Matrix
-  N (python type: Integer) - number of updates/iterations - Default Value = 10
+  b (python type: Numpy Matrix) - values of individuals initial beliefs at t = 0
+  n (python type: Integer) - number of updates/iterations - Default Value = 10
   
 Output: 
   Updated adjacency matrix
@@ -26,7 +27,7 @@ Model:
 import networkx as nx
 import numpy as np
 
-def degroot(T,n=10):
+def degroot(T,b,n=10):
   G = nx.from_numpy_matrix(T, parallel_edges=False, create_using=nx.DiGraph)
   return T,G
 
