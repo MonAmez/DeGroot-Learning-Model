@@ -1,5 +1,3 @@
-
-
 '''
 DEGROOT LEARNING MODEL
 
@@ -22,13 +20,15 @@ Model:
   Start with beliefs b_i(0) in [0,1]
   Updating b_i(t) = SUM(T_(i,j)b_j(t-1))
     update is a weighted average of the belief of the neighbors which is captured by T_(i,j)
-    SUM(T_(i,j)) = 1 where T_(i,j) >= 0 
+    SUM(T_(i,j)) = 1 wh ere T_(i,j) >= 0 
 '''
+
 import networkx as nx
 import numpy as np
 
 def degroot(T,b,n=10):
   G = nx.from_numpy_matrix(T, parallel_edges=False, create_using=nx.DiGraph)
-  return T,G
-
+  for i in range(n):
+    b = T.dot(b)
+  return T,G,b
 
