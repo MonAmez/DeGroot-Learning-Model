@@ -28,7 +28,8 @@ import numpy as np
 
 def degroot(T,b,n=10):
   G = nx.from_numpy_matrix(T, parallel_edges=False, create_using=nx.DiGraph)
+  T2 = T
   for i in range(n):
     b = T.dot(b)
-  return T,G,b
-
+    T2 = T.dot(T2)
+  return T2,G,b
